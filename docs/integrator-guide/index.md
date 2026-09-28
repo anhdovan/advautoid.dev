@@ -2,6 +2,8 @@
 
 The Integrator Guide is intended for System Integrators (SIs), Solution Architects, and DevOps engineers deploying AutoID RFID systems in commercial and industrial settings.
 
+> 🌐 **Live Web Platform**: Visit [https://advautoid.com](https://advautoid.com) | [Documentation Hub](https://advautoid.com/docs)
+
 ---
 
 ## 📑 Guide Sections

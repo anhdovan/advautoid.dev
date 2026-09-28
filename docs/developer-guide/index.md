@@ -2,6 +2,8 @@
 
 The Developer Guide covers architectural foundations, memory structures, algorithms, and driver extension mechanisms inside the **Adv.SmartSdk** engine.
 
+> 🌐 **Live Web Platform**: Visit [https://advautoid.com](https://advautoid.com) | [Documentation Hub](https://advautoid.com/docs)
+
 ---
 
 ## 📑 Guide Sections

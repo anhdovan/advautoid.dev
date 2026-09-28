@@ -2,6 +2,8 @@
 
 Welcome to the **advautoid.dev** Getting Started guide. This section provides everything needed to establish your first RFID reader connection, process real-time tags, and deploy the SDK across environments.
 
+> 🌐 **Live Web Platform**: Test the live RFID simulator and manage trial licenses on the official portal at [https://advautoid.com](https://advautoid.com) (or explore [https://advautoid.com/docs](https://advautoid.com/docs)).
+
 ---
 
 ## 🧭 Navigation
