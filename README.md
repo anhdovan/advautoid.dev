@@ -1,0 +1,210 @@
+# advautoid.dev - Universal RFID & AutoID Developer Hub
+
+[![CI Validation](https://github.com/anhdovan/advautoid.dev/actions/workflows/ci.yml/badge.svg)](https://github.com/anhdovan/advautoid.dev/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![SDK Engine](https://img.shields.io/badge/Core%20Engine-Native%20AOT%20C--ABI-red.svg)]()
+[![Languages](https://img.shields.io/badge/Polyglot-JS%20%7C%20TS%20%7C%20Python%20%7C%20C%2B%2B%20%7C%20C%23%20%7C%20Java-orange.svg)]()
+[![Hardware Matrix](https://img.shields.io/badge/Hardware-Impinj%20%7C%20Zebra%20%7C%20Urovo%20%7C%20Unitech%20%7C%20CAEN%20%7C%20Chainway-darkgreen.svg)]()
+
+Welcome to **advautoid.dev**, the open-access developer portal, integration blueprints, and multi-language sample catalog for the **Beetech Universal RFID Adv.SmartSdk** and **AutoID Edge Gateway** platform.
+
+Whether you are building warehouse automation, logistics portals, manufacturing tracking, retail inventory, or smart gate validation, this repository provides complete guides, architectural specs, and runnable source code in **JavaScript**, **TypeScript**, **Python**, **C++**, **C# (.NET 8)**, and **Java (Java 21 FFM API)**.
+
+---
+
+## 🚀 Quick Navigation
+
+| Section | Focus Area | Audience | Link |
+| :--- | :--- | :--- | :--- |
+| **Getting Started** | 5-minute quickstart, installation, reader discovery | All developers | [Quickstart Guide](docs/getting-started/quickstart.md) |
+| **Developer Guide** | Core concepts, native C-ABI, ChaCha20 EPC crypto, GS1 SGTIN codec, portal direction | Application engineers | [Developer Guide](docs/developer-guide/core-concepts.md) |
+| **Integrator Guide** | Edge deployment, Docker, CloudEvents webhooks, licensing, reader matrix | System integrators / DevOps | [Integrator Guide](docs/integrator-guide/architecture-overview.md) |
+| **API Reference** | Native C-ABI exports, REST Gateway API, WebSocket tag stream | API consumers | [API Reference](docs/api-reference/c-abi.md) |
+| **Code Samples** | Runnable code in JS, TS, Python, C++, C#, Java | Polyglot coders | [Samples Directory](samples/) |
+
+---
+
+## 🏗️ Architectural Topology
+
+The platform provides a 3-tier architecture separating hardware drivers, high-performance unmanaged execution, and high-level polyglot consumers:
+
+```mermaid
+graph TD
+    subgraph HostApps["Client Applications & Edge Services"]
+        JS_APP["Node.js / Web (JavaScript / TypeScript)"]
+        PY_APP["Python Microservices (FastAPI / ctypes)"]
+        CPP_APP["C++ Embedded & Desktop Applications"]
+        CS_APP["C# .NET 8 Industrial Systems"]
+        JAVA_APP["Enterprise Java 21 Services (FFM API)"]
+    end
+
+    subgraph EdgeGateway["AutoID Edge Gateway / Client Layer"]
+        NPM_CLIENT["@beetech-autoid/smartsdk-client<br/>(REST & WebSocket)"]
+        REST_API["Gateway HTTP / CloudEvents Sinks"]
+        NATIVE_WRAPPER["Language C-ABI Wrappers (ctypes / FFM / PInvoke)"]
+    end
+
+    subgraph NativeCore["AdvSmartSdk.dll / libAdvSmartSdk.so (Native AOT C-ABI)"]
+        C_EXPORTS["Unmanaged C-ABI Exports (Zero-Allocation)"]
+        CRYPTO["ChaCha20 EPC Anti-Clone Security"]
+        GS1["GS1 SGTIN-96 Codec (Bitwise Nanosecond)"]
+        PORTAL["RSSI Centroid Direction Detector"]
+        DRIVER_SPI["Universal Reader Driver Registry"]
+    end
+
+    subgraph Hardware["Connected RFID Reader Hardware Catalog"]
+        IMP["Impinj Speedway & R700 / R420"]
+        ZEB["Zebra FX9600 / FX7500 / Sleds"]
+        URO["Urovo FR2000 / DT50P Handhelds"]
+        UNI["Unitech RS804 / RG768 / RP902"]
+        CAE["CAEN RFID (qIDmini / Slate / Tile)"]
+        CHN["Chainway (R3 Desktop / C72 / C66)"]
+        MCK["Virtual Mock Loopback Simulator"]
+    end
+
+    HostApps --> NPM_CLIENT
+    HostApps --> REST_API
+    HostApps --> NATIVE_WRAPPER
+
+    NPM_CLIENT --> REST_API
+    NATIVE_WRAPPER --> C_EXPORTS
+
+    C_EXPORTS --> CRYPTO
+    C_EXPORTS --> GS1
+    C_EXPORTS --> PORTAL
+    C_EXPORTS --> DRIVER_SPI
+
+    DRIVER_SPI --> IMP
+    DRIVER_SPI --> ZEB
+    DRIVER_SPI --> URO
+    DRIVER_SPI --> UNI
+    DRIVER_SPI --> CAE
+    DRIVER_SPI --> CHN
+    DRIVER_SPI --> MCK
+```
+
+---
+
+## 💻 Language Code Samples Matrix
+
+Explore end-to-end, runnable implementations across modern languages:
+
+| Language | Core Tech / Wrapper | Description | Sample Location |
+| :--- | :--- | :--- | :--- |
+| **JavaScript** | Node.js / Browser WebSockets | Stream tags via WebSocket, receive CloudEvents webhooks, live HTML monitor | [`samples/javascript`](samples/javascript/) |
+| **TypeScript** | `@beetech-autoid/smartsdk-client` | Type-safe gateway client, portal transit tracker, real-time reader control | [`samples/typescript`](samples/typescript/) |
+| **Python** | `ctypes` & `requests` | Direct C-ABI binding, reader orchestration, ChaCha20 encryption, Flask webhook | [`samples/python`](samples/python/) |
+| **C++** | C++17 Header & Dynamic Loader | Ultra-low latency native integration, unmanaged callback handler, CMake build | [`samples/cpp`](samples/cpp/) |
+| **C#** | .NET 8 P/Invoke & High-level SDK | Enterprise C# sample with async pipelines, portal direction, hardware fingerprinting | [`samples/csharp`](samples/csharp/) |
+| **Java** | Java 21 Foreign Function & Memory | Modern JNI-free C-ABI execution with `java.lang.foreign` | [`samples/java`](samples/java/) |
+
+---
+
+## ⚡ 60-Second Quickstart by Language
+
+### 1. TypeScript / JavaScript (via NPM)
+```bash
+npm install @beetech-autoid/smartsdk-client
+```
+```typescript
+import { SmartSdkClient } from '@beetech-autoid/smartsdk-client';
+
+const client = new SmartSdkClient({ baseUrl: 'http://127.0.0.1:18080' });
+
+client.subscribeTags((tag) => {
+  console.log(`[TAG] EPC: ${tag.epc} | RSSI: ${tag.rssi} dBm | Ant: ${tag.antenna}`);
+});
+```
+
+### 2. Python (via Native C-ABI)
+```python
+from smart_sdk import SmartSdk
+
+sdk = SmartSdk("AdvSmartSdk.dll")
+sdk.set_dev_license_bypass(True)
+
+with sdk.create_reader("mock", reader_id=1, address="virtual:loopback") as reader:
+    reader.start_inventory(lambda tag: print(f"Tag read: {tag.epc}, RSSI: {tag.rssi}"))
+```
+
+### 3. C++17
+```cpp
+#include "AdvSmartSdk.h"
+
+int main() {
+    Beetech::Adv::AdvSmartSdk sdk("AdvSmartSdk.dll");
+    sdk.Sdk_SetDevLicenseBypass(1);
+    
+    void* reader = nullptr;
+    sdk.Sdk_CreateReader("mock", 1, "virtual:loopback", &reader);
+    sdk.Sdk_Connect(reader);
+    sdk.Sdk_StartInventory(reader);
+}
+```
+
+---
+
+## 📡 Supported Hardware Catalog
+
+The SDK abstracts vendor proprietary protocols (LLRP, Impinj REST, Urovo Binary, CAEN ByteStream, Unitech API) into a unified programming model:
+
+| Manufacturer | Models Supported | Communication Protocols | Supported Platforms |
+| :--- | :--- | :--- | :--- |
+| **Impinj** | Speedway R420, R220, R120, R700, Speedway Revolution | LLRP, REST API, MQTT, WebSockets | Windows x64, Linux x64 |
+| **Zebra** | FX9600, FX7500, RFD40, RFD8500, RFD90, MC3300R | LLRP, RFID SDK, BLE, USB | Windows x64, Android |
+| **Urovo** | FR2000, RF2000, DT50P, DT610, CT48 | TCP Socket, Serial/USB, Handheld Service | Windows x64, Android |
+| **Unitech** | RS804, HT730, RG768, RP902 | LLRP, WebSocket, Serial, Android SDK | Windows x64, Android |
+| **CAEN RFID** | qIDmini, Slate, Tile, Quattro, Quark | USB Virtual COM, Serial, Bluetooth | Windows x64, Linux |
+| **Chainway** | R3 Desktop, C72, C66, C70 Handhelds | Serial COM, USB, Android UART | Windows x64, Android |
+| **Virtual Mock** | Loopback Tag Generator & Direction Simulator | In-Memory Interop | All Platforms |
+
+*For complete port configuration, baud rates, and antenna tuning, consult the [Supported Hardware Matrix](docs/integrator-guide/supported-hardware-matrix.md).*
+
+---
+
+## 📖 Complete Documentation Index
+
+### Getting Started
+- [Platform Prerequisites & Overview](docs/getting-started/index.md)
+- [5-Minute Quickstart Walkthrough](docs/getting-started/quickstart.md)
+- [Installation Guide (npm, NuGet, pip, Native)](docs/getting-started/installation.md)
+- [Hardware Setup & Antenna Calibration](docs/getting-started/hardware-setup.md)
+
+### Developer Guide
+- [Core Architecture & Event Lifecycle](docs/developer-guide/core-concepts.md)
+- [Native AOT C-ABI Specifications](docs/developer-guide/native-aot-c-abi.md)
+- [ChaCha20 EPC Anti-Clone Cryptography](docs/developer-guide/epc-cryptography.md)
+- [Zero-Allocation GS1 SGTIN-96 Codec](docs/developer-guide/gs1-sgtin-codec.md)
+- [RSSI Centroid Portal Direction Tracking](docs/developer-guide/direction-detection.md)
+- [Writing Custom Reader Driver Plugins](docs/developer-guide/custom-driver-plugin.md)
+
+### Integrator Guide
+- [System Architecture & Deployment Topologies](docs/integrator-guide/architecture-overview.md)
+- [Docker Edge Gateway Deployment](docs/integrator-guide/edge-gateway-deployment.md)
+- [CloudEvents Webhook Integration](docs/integrator-guide/cloudevents-webhook.md)
+- [Hardware Compatibility Matrix](docs/integrator-guide/supported-hardware-matrix.md)
+- [Hardware Fingerprinting & Cryptographic Licensing](docs/integrator-guide/licensing-and-fingerprinting.md)
+
+### API References
+- [C-ABI Function Signatures & Structs](docs/api-reference/c-abi.md)
+- [Edge Gateway REST API Reference](docs/api-reference/rest-api.md)
+- [WebSocket Live Tag Streaming Protocol](docs/api-reference/websocket-api.md)
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions from hardware manufacturers, system integrators, and independent developers!
+To contribute driver modules, bug fixes, or documentation enhancements:
+1. Fork this repository.
+2. Create your feature branch (`git checkout -b feature/driver-x`).
+3. Commit your changes and verify CI tests pass.
+4. Open a Pull Request against `main`.
+
+---
+
+## 📄 License & Community Support
+
+- **Repository License**: [MIT License](LICENSE)
+- **SDK Licensing**: Enterprise node-locked licensing with development bypass support. Contact `dev@beetech-autoid.com` or consult the [Licensing Guide](docs/integrator-guide/licensing-and-fingerprinting.md).
+- **Technical Support**: Submit GitHub issues or visit [https://advautoid.dev](https://advautoid.dev).

@@ -1,0 +1,81 @@
+name: CI Validation
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate-node-and-ts:
+    name: Validate Node.js & TypeScript Samples
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check TypeScript Sample
+        working-directory: samples/typescript
+        run: |
+          npm install
+          npm run build
+
+      - name: Check JavaScript Sample
+        working-directory: samples/javascript
+        run: |
+          npm install --package-lock-only || true
+
+  validate-python:
+    name: Validate Python Samples
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Syntax Check Python Scripts
+        working-directory: samples/python
+        run: |
+          python -m py_compile smart_sdk.py main.py webhook_receiver.py
+
+  validate-dotnet:
+    name: Validate .NET C# Samples
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build C# Quickstart Sample
+        working-directory: samples/csharp/Quickstart
+        run: dotnet build -c Release
+
+      - name: Build C# Native P/Invoke Sample
+        working-directory: samples/csharp/NativePInvoke
+        run: dotnet build -c Release
+
+  validate-cpp:
+    name: Validate C++ CMake Configuration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure CMake
+        working-directory: samples/cpp
+        run: |
+          cmake -B build
+          cmake --build build --config Release

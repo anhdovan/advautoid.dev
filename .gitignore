@@ -1,0 +1,58 @@
+# Operating System Files
+Thumbs.db
+[Dd]esktop.ini
+.DS_Store
+
+# IDE and Editor Files
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# Build & Output Folders
+bin/
+obj/
+dist/
+out/
+build/
+TestResults/
+
+# Node.js / NPM
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tgz
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.env
+.venv/
+venv/
+env/
+
+# C / C++ Compiler outputs
+*.obj
+*.o
+*.pdb
+*.ilk
+*.exp
+*.exe
+*.dll
+*.so
+*.dylib
+CMakeCache.txt
+CMakeFiles/
+
+# Java
+*.class
+*.jar
+*.war
+
+# Logs and runtime dumps
+*.log
+hs_err_pid*
+replay_pid*

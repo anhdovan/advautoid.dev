@@ -1,0 +1,16 @@
+{
+  "name": "autoid-sample-javascript",
+  "version": "1.0.0",
+  "description": "AutoID JavaScript samples for Edge Gateway and CloudEvents webhooks",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "webhook": "node cloudevents-receiver.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "ws": "^8.16.0"
+  },
+  "license": "MIT"
+}

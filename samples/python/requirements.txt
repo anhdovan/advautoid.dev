@@ -1,0 +1,4 @@
+# Python dependencies for AutoID samples
+requests>=2.31.0
+websockets>=12.0
+flask>=3.0.0
