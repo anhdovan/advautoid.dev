@@ -44,6 +44,8 @@ env/
 *.dll
 *.so
 *.dylib
+!runtimes/**/*.dll
+!runtimes/**/*.so
 CMakeCache.txt
 CMakeFiles/
 

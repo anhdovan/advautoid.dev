@@ -86,17 +86,20 @@ services:
 
 ## 3. Native Engine Library Integration (`AdvSmartSdk`)
 
-For native C++, Python, and Java developers using the compiled shared library:
+Prebuilt native unmanaged libraries are available directly in this repository:
 
-### Windows x64
-- Ensure `AdvSmartSdk.dll` is located in:
-  - Your executable directory, OR
-  - Windows `System32` or directory present in `PATH`.
-- Requirements: Visual C++ 2015-2022 Redistributable (x64).
+### Windows x64 (`AdvSmartSdk.dll`)
+- **Direct Download**: [Download `AdvSmartSdk.dll`](../../runtimes/win-x64/AdvSmartSdk.dll?raw=true) (Located at [`runtimes/win-x64/AdvSmartSdk.dll`](../../runtimes/win-x64/AdvSmartSdk.dll))
+- Ensure `AdvSmartSdk.dll` is placed in:
+  - Your application's executable directory, OR
+  - Windows `System32` or a folder in your `PATH`.
+- **Prerequisites**: Visual C++ 2015-2022 Redistributable (x64).
 
-### Linux x64
+### Linux x64 (`libAdvSmartSdk.so`)
+- **Download**: Available on [GitHub Releases](https://github.com/anhdovan/advautoid.dev/releases)
+- **Local Build**: See [Linux Build Guide](../../runtimes/linux-x64/README.md)
 - Ensure `libAdvSmartSdk.so` is in `/usr/local/lib` or `LD_LIBRARY_PATH`.
-- Requirements: `glibc >= 2.31`, `libstdc++6`.
+- **Prerequisites**: `glibc >= 2.31`, `libstdc++6`.
 
 ---
 

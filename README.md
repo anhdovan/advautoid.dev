@@ -21,6 +21,21 @@ Whether you are building warehouse automation, logistics portals, manufacturing 
 | **Integrator Guide** | Edge deployment, Docker, CloudEvents webhooks, licensing, reader matrix | System integrators / DevOps | [Integrator Guide](docs/integrator-guide/architecture-overview.md) |
 | **API Reference** | Native C-ABI exports, REST Gateway API, WebSocket tag stream | API consumers | [API Reference](docs/api-reference/c-abi.md) |
 | **Code Samples** | Runnable code in JS, TS, Python, C++, C#, Java | Polyglot coders | [Samples Directory](samples/) |
+| **Download Binaries** | Prebuilt unmanaged shared libraries (DLL, SO) | Developers & SIs | [Download Runtimes](runtimes/) |
+
+---
+
+## 📥 Download Prebuilt Native SDK Libraries (`AdvSmartSdk`)
+
+The unmanaged core engine is compiled Ahead-of-Time (**Native AOT**) into standalone shared libraries with zero .NET runtime dependencies:
+
+| Platform | File | Architecture | Direct Download | SHA-256 Checksum |
+| :--- | :--- | :---: | :--- | :--- |
+| **Windows** | `AdvSmartSdk.dll` | x64 | [📥 Download `AdvSmartSdk.dll`](https://github.com/anhdovan/advautoid.dev/raw/main/runtimes/win-x64/AdvSmartSdk.dll) | `E3292E0346B0AA07EA30A71AA0F29F403BA298E1E570BE324A9E7ECE305718ED` |
+| **Linux** | `libAdvSmartSdk.so` | x64 | [📦 GitHub Releases](https://github.com/anhdovan/advautoid.dev/releases) / [Build Guide](runtimes/linux-x64/README.md) | Published on tagged releases |
+| **All Platforms** | `advautoid-sdk-bundle.zip` | Multi | [📦 Latest GitHub Release](https://github.com/anhdovan/advautoid.dev/releases/latest) | See release page |
+
+*To learn how to load these binaries into C++, Python, C# P/Invoke, and Java 21, consult the [Runtimes Guide](runtimes/README.md).*
 
 ---
 
