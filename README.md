@@ -32,7 +32,7 @@ The unmanaged core engine is compiled Ahead-of-Time (**Native AOT**) into standa
 | Platform | File | Architecture | Direct Download | SHA-256 Checksum |
 | :--- | :--- | :---: | :--- | :--- |
 | **Windows** | `AdvSmartSdk.dll` | x64 | [📥 Download `AdvSmartSdk.dll`](https://github.com/anhdovan/advautoid.dev/raw/main/runtimes/win-x64/AdvSmartSdk.dll) | `E3292E0346B0AA07EA30A71AA0F29F403BA298E1E570BE324A9E7ECE305718ED` |
-| **Linux** | `libAdvSmartSdk.so` | x64 | [📦 GitHub Releases](https://github.com/anhdovan/advautoid.dev/releases) / [Build Guide](runtimes/linux-x64/README.md) | Published on tagged releases |
+| **Linux** | `libAdvSmartSdk.so` | x64 | [📥 Download `libAdvSmartSdk.so`](https://github.com/anhdovan/advautoid.dev/raw/main/runtimes/linux-x64/libAdvSmartSdk.so) | `61A06A1424CEBD0FF365A51131A4D647086B11BF3028485761F5C937B60C5BFA` |
 | **All Platforms** | `advautoid-sdk-bundle.zip` | Multi | [📦 Latest GitHub Release](https://github.com/anhdovan/advautoid.dev/releases/latest) | See release page |
 
 *To learn how to load these binaries into C++, Python, C# P/Invoke, and Java 21, consult the [Runtimes Guide](runtimes/README.md).*

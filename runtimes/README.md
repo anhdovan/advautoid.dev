@@ -10,8 +10,8 @@ These libraries expose a pure C-ABI and execute as native machine code without a
 
 | Platform | Target Architecture | Binary File | Format | Status | Download Link |
 | :--- | :--- | :--- | :--- | :---: | :--- |
-| **Windows** | x64 (AMD64 / Intel 64) | [`AdvSmartSdk.dll`](win-x64/AdvSmartSdk.dll) | PE32+ DLL | **Ready** | [Download `AdvSmartSdk.dll`](win-x64/AdvSmartSdk.dll?raw=true) |
-| **Linux** | x64 (glibc >= 2.31) | [`libAdvSmartSdk.so`](linux-x64/README.md) | ELF64 Shared Object | **CI / Docker** | [Build Guide & Releases](linux-x64/README.md) |
+| **Windows** | x64 (AMD64 / Intel 64) | [`AdvSmartSdk.dll`](win-x64/AdvSmartSdk.dll) | PE32+ DLL | **Ready** | [📥 Download `AdvSmartSdk.dll`](win-x64/AdvSmartSdk.dll?raw=true) |
+| **Linux** | x64 (glibc >= 2.31) | [`libAdvSmartSdk.so`](linux-x64/libAdvSmartSdk.so) | ELF64 Shared Object | **Ready** | [📥 Download `libAdvSmartSdk.so`](linux-x64/libAdvSmartSdk.so?raw=true) |
 | **Android** | arm64-v8a / armeabi-v7a | `libsmartsdk.so` | Native Android JNI | **Release** | Via Android SDK AAR / GitHub Releases |
 
 ---
@@ -28,6 +28,18 @@ These libraries expose a pure C-ABI and execute as native machine code without a
 To verify locally on Windows (PowerShell):
 ```powershell
 Get-FileHash -Path runtimes/win-x64/AdvSmartSdk.dll -Algorithm SHA256
+```
+
+### Linux x64: `libAdvSmartSdk.so`
+- **File**: `runtimes/linux-x64/libAdvSmartSdk.so`
+- **Size**: ~24.1 MB
+- **Compilation**: .NET 8 Native AOT compiled under Ubuntu 24.04 (WSL) with Clang 18
+- **Format**: ELF 64-bit LSB shared object, x86-64, dynamically linked, stripped
+- **SHA-256**: `61A06A1424CEBD0FF365A51131A4D647086B11BF3028485761F5C937B60C5BFA`
+
+To verify on Linux:
+```bash
+sha256sum runtimes/linux-x64/libAdvSmartSdk.so
 ```
 
 ---

@@ -96,10 +96,10 @@ Prebuilt native unmanaged libraries are available directly in this repository:
 - **Prerequisites**: Visual C++ 2015-2022 Redistributable (x64).
 
 ### Linux x64 (`libAdvSmartSdk.so`)
-- **Download**: Available on [GitHub Releases](https://github.com/anhdovan/advautoid.dev/releases)
-- **Local Build**: See [Linux Build Guide](../../runtimes/linux-x64/README.md)
+- **Direct Download**: [Download `libAdvSmartSdk.so`](../../runtimes/linux-x64/libAdvSmartSdk.so?raw=true) (Located at [`runtimes/linux-x64/libAdvSmartSdk.so`](../../runtimes/linux-x64/libAdvSmartSdk.so))
 - Ensure `libAdvSmartSdk.so` is in `/usr/local/lib` or `LD_LIBRARY_PATH`.
 - **Prerequisites**: `glibc >= 2.31`, `libstdc++6`.
+- **Local Build**: See [Linux Build Guide](../../runtimes/linux-x64/README.md)
 
 ---
 
