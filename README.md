@@ -1,12 +1,13 @@
 # advautoid.dev - Universal RFID & AutoID Developer Hub
 
 [![CI Validation](https://github.com/anhdovan/advautoid.dev/actions/workflows/ci.yml/badge.svg)](https://github.com/anhdovan/advautoid.dev/actions)
+[![Live Portal](https://img.shields.io/badge/Live%20Portal-advautoid.sams.vn-cyan.svg)](https://advautoid.sams.vn)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![SDK Engine](https://img.shields.io/badge/Core%20Engine-Native%20AOT%20C--ABI-red.svg)]()
 [![Languages](https://img.shields.io/badge/Polyglot-JS%20%7C%20TS%20%7C%20Python%20%7C%20C%2B%2B%20%7C%20C%23%20%7C%20Java-orange.svg)]()
 [![Hardware Matrix](https://img.shields.io/badge/Hardware-Impinj%20%7C%20Zebra%20%7C%20Urovo%20%7C%20Unitech%20%7C%20CAEN%20%7C%20Chainway-darkgreen.svg)]()
 
-Welcome to **advautoid.dev**, the open-access developer portal, integration blueprints, and multi-language sample catalog for the **Beetech Universal RFID Adv.SmartSdk** and **AutoID Edge Gateway** platform.
+Welcome to **advautoid.dev**, the open-access developer portal, integration blueprints, and multi-language sample catalog for the **Beetech Universal RFID Adv.SmartSdk** and **AutoID Edge Gateway** platform. Live cloud portal & licensing service: [https://advautoid.sams.vn](https://advautoid.sams.vn).
 
 Whether you are building warehouse automation, logistics portals, manufacturing tracking, retail inventory, or smart gate validation, this repository provides complete guides, architectural specs, and runnable source code in **JavaScript**, **TypeScript**, **Python**, **C++**, **C# (.NET 8)**, and **Java (Java 21 FFM API)**.
 
@@ -16,6 +17,7 @@ Whether you are building warehouse automation, logistics portals, manufacturing 
 
 | Section | Focus Area | Audience | Link |
 | :--- | :--- | :--- | :--- |
+| **Live Portal** | Online web portal, instant trial licenses & fleet control | All users | [advautoid.sams.vn](https://advautoid.sams.vn) |
 | **Getting Started** | 5-minute quickstart, installation, reader discovery | All developers | [Quickstart Guide](docs/getting-started/quickstart.md) |
 | **Developer Guide** | Core concepts, native C-ABI, ChaCha20 EPC crypto, GS1 SGTIN codec, portal direction | Application engineers | [Developer Guide](docs/developer-guide/core-concepts.md) |
 | **Integrator Guide** | Edge deployment, Docker, CloudEvents webhooks, licensing, reader matrix | System integrators / DevOps | [Integrator Guide](docs/integrator-guide/architecture-overview.md) |
