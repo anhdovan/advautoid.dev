@@ -127,9 +127,14 @@ public:
 
         for (const auto& name : libNames) {
             candidates.push_back(name);
+            candidates.push_back("../../runtimes/win-x64/" + name);
+            candidates.push_back("../../runtimes/linux-x64/" + name);
+            candidates.push_back("../runtimes/win-x64/" + name);
+            candidates.push_back("../runtimes/linux-x64/" + name);
             candidates.push_back("../../publish/" + name);
             candidates.push_back("../" + name);
             for (const auto& rid : rids) {
+                candidates.push_back("../../runtimes/" + rid + "/" + name);
                 candidates.push_back("../../bin/Release/net8.0/" + rid + "/publish/" + name);
             }
         }

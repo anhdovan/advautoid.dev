@@ -35,7 +35,7 @@ def main():
     # 3. ChaCha20 EPC Cryptography
     print_separator("3. ChaCha20 Anti-Clone EPC Cryptography")
     tag_id = 9876543210
-    tag_type = "PALLET"
+    tag_type = "0001"
     encrypted_epc = sdk.encrypt_epc(tag_id, tag_type)
     print(f"Original Tag ID: {tag_id} | Type: {tag_type}")
     print(f"Encrypted EPC  : {encrypted_epc}")

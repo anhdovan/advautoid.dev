@@ -67,7 +67,7 @@ public class Program
 
             // 3. ChaCha20 EPC Encrypt
             byte[] encBuf = new byte[32];
-            int encLen = Sdk_EncryptEpc(100200300400L, "PALLET", encBuf, encBuf.Length);
+            int encLen = Sdk_EncryptEpc(100200300400L, "0001", encBuf, encBuf.Length);
             string encEpc = Encoding.ASCII.GetString(encBuf, 0, Math.Max(0, encLen));
             Console.WriteLine($"[3] Encrypted ChaCha20 EPC: {encEpc}");
 

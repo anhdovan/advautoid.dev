@@ -35,10 +35,13 @@ from smart_sdk import SmartSdk
 
 sdk = SmartSdk("AdvSmartSdk.dll")
 
-# Encrypt Tag ID 987654321 with asset type "PALLET"
-epc_hex = sdk.encrypt_epc(tag_id=987654321, tag_type="PALLET")
-print(f"Encrypted EPC: {epc_hex}")  # e.g., 'A14F98E20B9987C190A2FE44'
+# Encrypt Tag ID 987654321 with 4-hex-digit asset class "0001"
+epc_hex = sdk.encrypt_epc(tag_id=987654321, tag_type="0001")
+print(f"Encrypted EPC: {epc_hex}")  # e.g., '00011F40FE7E42260A6DDBCB'
 ```
+
+> [!NOTE]
+> `type` is encoded as a 4-character hexadecimal category identifier (e.g. `"0001"`, `"A1B2"`), which forms the first 16 bits of the 96-bit encrypted EPC.
 
 ### Decrypting and Authenticating an Asset Payload (C++)
 

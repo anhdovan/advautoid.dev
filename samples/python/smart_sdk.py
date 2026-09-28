@@ -28,10 +28,15 @@ DEFAULT_LIB_PATHS = []
 for lib_name in LIB_NAMES:
     DEFAULT_LIB_PATHS.extend([
         os.path.abspath(os.path.join(os.path.dirname(__file__), lib_name)),
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "runtimes", "win-x64", lib_name)),
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "runtimes", "linux-x64", lib_name)),
         os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", lib_name)),
         os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "publish", lib_name))
     ])
     for rid in RID_DIRS:
+        DEFAULT_LIB_PATHS.append(
+            os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "runtimes", rid, lib_name))
+        )
         DEFAULT_LIB_PATHS.append(
             os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "bin", "Release", "net8.0", rid, "publish", lib_name))
         )

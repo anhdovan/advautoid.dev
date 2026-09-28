@@ -32,7 +32,7 @@ int main() {
     std::cout << "[3] Testing ChaCha20 EPC Cryptography...\n";
     char encEpc[32] = {0};
     long long tagId = 123456789LL;
-    int encRes = sdk.Sdk_EncryptEpc(tagId, "BOX", encEpc, sizeof(encEpc));
+    int encRes = sdk.Sdk_EncryptEpc(tagId, "0001", encEpc, sizeof(encEpc));
     if (encRes > 0) {
         std::cout << "    Encrypted EPC: " << encEpc << "\n";
         
