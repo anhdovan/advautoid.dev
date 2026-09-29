@@ -73,3 +73,14 @@ In the Edge Gateway Docker container, set the environment variable:
 
 > [!WARNING]
 > Developer bypass mode is strictly restricted to development environments and non-production testing. Production builds should always use commercial node-locked licenses.
+
+---
+
+## 4. Instant Trial License Generator
+
+Need an official RSA-2048 digitally signed license for a proof-of-concept or pilot?
+1. Obtain your machine hardware fingerprint via `sdk.get_hardware_fingerprint()`.
+2. Visit the self-service portal: **[https://advautoid.com/trial](https://advautoid.com/trial)**
+3. Generate and download your instant 30-day trial license file (`license.lic`).
+4. Place `license.lic` into your application directory or mount it into `/app/license.lic` in Docker.
+

@@ -3,6 +3,7 @@
 [![CI Validation](https://github.com/anhdovan/advautoid.dev/actions/workflows/ci.yml/badge.svg)](https://github.com/anhdovan/advautoid.dev/actions)
 [![Live Platform](https://img.shields.io/badge/Live%20Platform-advautoid.com-cyan.svg)](https://advautoid.com)
 [![Web Docs](https://img.shields.io/badge/Web%20Docs-advautoid.com%2Fdocs-blue.svg)](https://advautoid.com/docs)
+[![Instant Trial](https://img.shields.io/badge/Instant%20Trial-advautoid.com%2Ftrial-green.svg)](https://advautoid.com/trial)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![SDK Engine](https://img.shields.io/badge/Core%20Engine-Native%20AOT%20C--ABI-red.svg)]()
 [![Languages](https://img.shields.io/badge/Polyglot-JS%20%7C%20TS%20%7C%20Python%20%7C%20C%2B%2B%20%7C%20C%23%20%7C%20Java-orange.svg)]()
@@ -10,8 +11,9 @@
 
 Welcome to **advautoid.dev**, the open-access developer portal, integration blueprints, and multi-language sample catalog for the **Beetech Universal RFID Adv.SmartSdk** and **AutoID Edge Gateway** platform. 
 
-🌐 **Live Web Platform & Instant Trial Licensing**: [https://advautoid.com](https://advautoid.com)  
-📖 **Interactive Web Documentation Hub**: [https://advautoid.com/docs](https://advautoid.com/docs)
+🌐 **Live Web Platform & Management**: [https://advautoid.com](https://advautoid.com)  
+📖 **Interactive Web Documentation Hub**: [https://advautoid.com/docs](https://advautoid.com/docs)  
+🔑 **Instant RSA-2048 Trial License Generator**: [https://advautoid.com/trial](https://advautoid.com/trial)
 
 Whether you are building warehouse automation, logistics portals, manufacturing tracking, retail inventory, or smart gate validation, this repository provides complete guides, architectural specs, and runnable source code in **JavaScript**, **TypeScript**, **Python**, **C++**, **C# (.NET 8)**, and **Java (Java 21 FFM API)**.
 
@@ -21,8 +23,9 @@ Whether you are building warehouse automation, logistics portals, manufacturing 
 
 | Section | Focus Area | Audience | Link |
 | :--- | :--- | :--- | :--- |
-| **Live Platform** | Online web portal, instant trial licenses & fleet control | All users | [advautoid.com](https://advautoid.com) |
+| **Live Platform** | Online web portal & fleet control | All users | [advautoid.com](https://advautoid.com) |
 | **Interactive Docs** | Web-based quickstart tabs, REST API tables & guide catalog | All developers | [advautoid.com/docs](https://advautoid.com/docs) |
+| **Instant Trial** | Self-service 30-day offline RSA-2048 developer & pilot licenses | Evaluators & SIs | [advautoid.com/trial](https://advautoid.com/trial) |
 | **Getting Started** | 5-minute quickstart, installation, reader discovery | All developers | [Quickstart Guide](docs/getting-started/quickstart.md) |
 | **Developer Guide** | Core concepts, native C-ABI, ChaCha20 EPC crypto, GS1 SGTIN codec, portal direction | Application engineers | [Developer Guide](docs/developer-guide/core-concepts.md) |
 | **Integrator Guide** | Edge deployment, Docker, CloudEvents webhooks, licensing, reader matrix | System integrators / DevOps | [Integrator Guide](docs/integrator-guide/architecture-overview.md) |
@@ -229,6 +232,7 @@ To contribute driver modules, bug fixes, or documentation enhancements:
 
 - **Live Platform & Web Portal**: [https://advautoid.com](https://advautoid.com)
 - **Interactive Documentation**: [https://advautoid.com/docs](https://advautoid.com/docs)
+- **Instant Trial License**: Generate your 30-day offline development license at [https://advautoid.com/trial](https://advautoid.com/trial)
 - **Repository License**: [MIT License](LICENSE)
-- **SDK Licensing**: Enterprise node-locked licensing with development bypass support. Contact `dev@beetech-autoid.com` or consult the [Licensing Guide](docs/integrator-guide/licensing-and-fingerprinting.md).
+- **SDK Licensing**: Enterprise node-locked licensing with development bypass support. Generate instant trial licenses at [https://advautoid.com/trial](https://advautoid.com/trial) or consult the [Licensing Guide](docs/integrator-guide/licensing-and-fingerprinting.md).
 - **Technical Support**: Submit GitHub issues or visit [https://advautoid.com](https://advautoid.com).
