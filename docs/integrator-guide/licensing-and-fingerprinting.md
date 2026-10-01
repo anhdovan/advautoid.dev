@@ -110,7 +110,7 @@ Mount the license file into `/app/license/smartsdk.lic`:
 ```yaml
 services:
   autoid-gateway:
-    image: beetech/autoid-gateway:latest
+    image: anhdv74/adv-rfid-gateway:latest
     environment:
       - DEV_LICENSE_BYPASS=false
       - LICENSE_FILE=/app/license/smartsdk.lic
@@ -158,7 +158,7 @@ During local development, automated CI test suites, or initial sandbox testing w
 docker run -d \
   -p 18080:18080 \
   -e DEV_LICENSE_BYPASS=true \
-  beetech/autoid-gateway:latest
+  anhdv74/adv-rfid-gateway:latest
 ```
 
 ### In Native Python Engine:

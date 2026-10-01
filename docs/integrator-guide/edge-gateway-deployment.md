@@ -51,7 +51,7 @@ version: '3.8'
 
 services:
   autoid-gateway:
-    image: beetech/autoid-gateway:latest
+    image: anhdv74/adv-rfid-gateway:latest
     container_name: autoid-gateway
     restart: always
     # "host" network is highly recommended for LLRP reader discovery & low latency

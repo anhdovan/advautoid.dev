@@ -51,7 +51,7 @@ docker run -d \
   -e GATEWAY_PORT=18080 \
   -e DEV_LICENSE_BYPASS=true \
   --restart unless-stopped \
-  beetech/autoid-gateway:latest
+  anhdv74/adv-rfid-gateway:latest
 ```
 
 ### Production `docker-compose.yml`
@@ -61,7 +61,7 @@ version: '3.8'
 
 services:
   autoid-gateway:
-    image: beetech/autoid-gateway:latest
+    image: anhdv74/adv-rfid-gateway:latest
     container_name: autoid-gateway
     restart: always
     network_mode: "host" # Recommended for reader multicast discovery & LLRP

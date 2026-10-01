@@ -34,7 +34,7 @@ docker run -d \
   -e GATEWAY_PORT=18080 \
   -e DEV_LICENSE_BYPASS=true \
   --restart unless-stopped \
-  beetech/autoid-gateway:latest
+  anhdv74/adv-rfid-gateway:latest
 ```
 
 #### Option B: Production Mode (Licensed & Persistent Volumes)
@@ -53,7 +53,7 @@ docker run -d \
   -e DEV_LICENSE_BYPASS=false \
   -e LICENSE_FILE=/app/license/smartsdk.lic \
   --restart always \
-  beetech/autoid-gateway:latest
+  anhdv74/adv-rfid-gateway:latest
 ```
 
 ---

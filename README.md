@@ -134,7 +134,7 @@ Before running client code, bring up the AutoID Edge Gateway and register your f
 
 ```bash
 # 1. Start Gateway Container (Test / Dev Mode with bypass):
-docker run -d --name autoid-gateway -p 18080:18080 -e DEV_LICENSE_BYPASS=true beetech/autoid-gateway:latest
+docker run -d --name autoid-gateway -p 18080:18080 -e DEV_LICENSE_BYPASS=true anhdv74/adv-rfid-gateway:latest
 
 # (For Production: query fingerprint via curl http://localhost:18080/api/fingerprint,
 #  subscribe at https://advautoid.com/trial, and mount smartsdk.lic into /app/license/smartsdk.lic)
