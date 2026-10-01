@@ -57,3 +57,44 @@ To avoid Garbage Collector pauses (in C# / Java / Node.js) and maximize throughp
 1. **Thread Separation**: Tag ingestion runs on dedicated high-priority native OS threads (`ThreadPriority.Highest`).
 2. **Lock-Free Ring Buffers**: Events are transferred from hardware sockets into unmanaged ring buffers.
 3. **Decoupled Sinks**: Dispatch to HTTP webhooks or disk spooling occurs asynchronously via worker thread pools.
+
+---
+
+## 4. Test vs. Production Execution Model
+
+Developers and SIs must establish their execution environment before calling reader APIs:
+
+```mermaid
+flowchart TD
+    subgraph EnvInit["1. Runtime & Environment Bootstrap"]
+        DEV["Test / Local Dev<br/>(DEV_LICENSE_BYPASS=true)"]
+        PROD["Production Appliance<br/>(Node-Locked Cryptographic License)"]
+    end
+
+    subgraph Security["2. Security Gatekeeper & Licensing"]
+        FP["Extract Hardware Fingerprint<br/>(BT-XXXX-XXXX-XXXX-XXXX)"]
+        LIC["Validate RSA-2048 smartsdk.lic<br/>(Matches Node Fingerprint & Reader Quota)"]
+    end
+
+    subgraph Devices["3. Device Provisioning & Ingestion"]
+        MOCK["Mock Simulator<br/>('mock', virtual:loopback)"]
+        HW["Physical Readers<br/>('impinj', 'zebra', 'urovo')"]
+    end
+
+    DEV --> MOCK
+    PROD --> FP --> LIC --> HW
+```
+
+### Environment Modes:
+- **Test / Sandbox Mode**:
+  - Run the Edge Gateway container with `-e DEV_LICENSE_BYPASS=true` or call `sdk.set_dev_license_bypass(True)` natively.
+  - Allows instant local execution, automated CI unit testing, and mock device simulation without acquiring license keys.
+- **Production Mode**:
+  - Retrieve the host's 22-character hardware fingerprint (`curl http://localhost:18080/api/fingerprint` or `SmartSdkManager.GetHardwareFingerprint()`).
+  - Subscribe for a trial at [advautoid.com/trial](https://advautoid.com/trial) or commercial license via the SI Portal.
+  - Mount or supply `smartsdk.lic`; the runtime engine enforces node identity and reader concurrency quotas.
+
+### Device Registration Strategy:
+- **Offline / CI Testing**: Register virtual mock readers (`driverId: "mock"`, `address: "virtual:loopback"`) to simulate tag bursts, portal directions, and GPIO triggers with zero physical hardware.
+- **Physical Commissioning**: Register vendor-certified drivers (`impinj`, `zebra`, `urovo`, `caen`, `unitech`) with network endpoints (`192.168.1.x:5084`).
+

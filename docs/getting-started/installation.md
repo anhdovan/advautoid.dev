@@ -82,7 +82,76 @@ services:
       retries: 3
 ```
 
+### Complete Onboarding Workflow (From Docker to Streaming)
+
+Follow these 4 sequential steps to initialize the Edge Gateway:
+
+#### 1. Retrieve Node Hardware Fingerprint
+Once the container starts (even before licensing), query its hardware fingerprint:
+```bash
+curl http://localhost:18080/api/fingerprint
+```
+*Output:*
+```json
+{
+  "hardwareFingerprint": "BT-7F3A-89E2-11C0-994B"
+}
+```
+
+#### 2. Subscribe / Issue Cryptographic License
+- Go to **[https://advautoid.com/trial](https://advautoid.com/trial)** (or your SI commercial license portal).
+- Paste your machine hardware fingerprint (`BT-XXXX-XXXX-XXXX-XXXX`).
+- Download your digital license file `smartsdk.lic`.
+
+#### 3. Import & Check License
+- Copy `smartsdk.lic` into your host `./license/` directory (mounted into `/app/license/smartsdk.lic`).
+- Verify the license is valid and active:
+```bash
+curl http://localhost:18080/api/health
+```
+*Expected output:*
+```json
+{
+  "status": "Healthy",
+  "version": "1.0.0",
+  "licenseStatus": "Valid",
+  "licensedTo": "Acme Corp",
+  "allowedReaders": 8,
+  "activeReaders": 0
+}
+```
+
+#### 4. Add & Provision Reader Devices
+Add a reader dynamically via REST or define it in `./config/readers.json`:
+
+```bash
+# Add a virtual simulator reader for offline testing
+curl -X POST http://localhost:18080/api/readers \
+  -H "Content-Type: application/json" \
+  -d '{
+    "readerId": 1,
+    "driverId": "mock",
+    "name": "Line 1 Mock",
+    "address": "virtual:loopback",
+    "powerDbm": 30.0,
+    "antennas": [1, 2]
+  }'
+
+# Or add a physical Impinj reader
+curl -X POST http://localhost:18080/api/readers \
+  -H "Content-Type: application/json" \
+  -d '{
+    "readerId": 2,
+    "driverId": "impinj",
+    "name": "Dock Door 01",
+    "address": "192.168.1.150:5084",
+    "powerDbm": 30.0,
+    "antennas": [1, 2, 3, 4]
+  }'
+```
+
 ---
+
 
 ## 3. Native Engine Library Integration (`AdvSmartSdk`)
 

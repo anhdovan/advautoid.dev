@@ -9,7 +9,7 @@ The Developer Guide covers architectural foundations, memory structures, algorit
 ## 📑 Guide Sections
 
 1. [Core Concepts](core-concepts.md)  
-   Reader lifecycle, streaming tag models, antenna multiplexing, and async event dispatch.
+   Reader lifecycle, streaming tag models, test vs prod environments, licensing gatekeeper, and device provisioning.
 
 2. [Native AOT C-ABI Specifications](native-aot-c-abi.md)  
    Under the hood of `AdvSmartSdk.dll` / `libAdvSmartSdk.so`: Unmanaged exports, memory layouts, calling conventions, and cross-language interoperability.

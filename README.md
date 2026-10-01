@@ -25,6 +25,7 @@ Whether you are building warehouse automation, logistics portals, manufacturing 
 | :--- | :--- | :--- | :--- |
 | **Live Platform** | Online web portal & fleet control | All users | [advautoid.com](https://advautoid.com) |
 | **Interactive Docs** | Web-based quickstart tabs, REST API tables & guide catalog | All developers | [advautoid.com/docs](https://advautoid.com/docs) |
+| **Developer & SI Deck** | Online 1080p PPTX viewer & solutions guide (13 slides) | Developers & SIs | [Interactive Viewer](https://advautoid.com/docs) / [📥 PPTX](https://advautoid.com/downloads/smartsdk-for-developers-and-sis.pptx) |
 | **Instant Trial** | Self-service 30-day offline RSA-2048 developer & pilot licenses | Evaluators & SIs | [advautoid.com/trial](https://advautoid.com/trial) |
 | **Getting Started** | 5-minute quickstart, installation, reader discovery | All developers | [Quickstart Guide](docs/getting-started/quickstart.md) |
 | **Developer Guide** | Core concepts, native C-ABI, ChaCha20 EPC crypto, GS1 SGTIN codec, portal direction | Application engineers | [Developer Guide](docs/developer-guide/core-concepts.md) |
@@ -125,7 +126,26 @@ Explore end-to-end, runnable implementations across modern languages:
 
 ---
 
-## ⚡ 60-Second Quickstart by Language
+## ⚡ 60-Second Quickstart
+
+### 0. Environment Bootstrap (Test vs. Production)
+
+Before running client code, bring up the AutoID Edge Gateway and register your first reader:
+
+```bash
+# 1. Start Gateway Container (Test / Dev Mode with bypass):
+docker run -d --name autoid-gateway -p 18080:18080 -e DEV_LICENSE_BYPASS=true beetech/autoid-gateway:latest
+
+# (For Production: query fingerprint via curl http://localhost:18080/api/fingerprint,
+#  subscribe at https://advautoid.com/trial, and mount smartsdk.lic into /app/license/smartsdk.lic)
+
+# 2. Add a Reader (Virtual Mock simulator for testing or physical Impinj/Zebra):
+curl -X POST http://localhost:18080/api/readers \
+  -H "Content-Type: application/json" \
+  -d '{"readerId": 1, "driverId": "mock", "name": "Sim 01", "address": "virtual:loopback", "powerDbm": 30.0, "antennas": [1, 2]}'
+```
+
+---
 
 ### 1. TypeScript / JavaScript (via NPM)
 ```bash
@@ -136,9 +156,13 @@ import { SmartSdkClient } from '@beetech-autoid/smartsdk-client';
 
 const client = new SmartSdkClient({ baseUrl: 'http://127.0.0.1:18080' });
 
+// Listen for real-time tag reads & portal direction
 client.subscribeTags((tag) => {
   console.log(`[TAG] EPC: ${tag.epc} | RSSI: ${tag.rssi} dBm | Ant: ${tag.antenna}`);
 });
+
+// Start inventory on Reader #1
+await client.startReader(1);
 ```
 
 ### 2. Python (via Native C-ABI)
