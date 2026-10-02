@@ -223,7 +223,10 @@ class SmartSdkReader:
     def disconnect(self):
         self._dll.Sdk_Disconnect(self._handle)
 
-    def start_inventory(self):
+    def start_inventory(self, callback: Optional[Callable[[TagReadEvent], None]] = None):
+        if callback is not None:
+            self.on_tag_read(callback)
+        self.connect()
         self._dll.Sdk_StartInventory(self._handle)
 
     def stop_inventory(self):
