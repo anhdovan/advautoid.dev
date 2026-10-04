@@ -1,10 +1,33 @@
 # 5-Minute Quickstart
-
+ 
 This walkthrough takes you from zero to streaming RFID tags and direction events in under five minutes.
 
-We provide two tracks:
+We provide three tracks:
+- **Track 0 (Fastest - 60s)**: Zero-Hardware Scaffolding (`npx create-autoid-app` or `dotnet new autoid-gate`)
 - **Track A**: Web & Microservice Track (JavaScript / TypeScript with Edge Gateway)
 - **Track B**: Native Embedded Track (Python / C++ with unmanaged native engine)
+
+---
+
+## ⚡ Track 0: 60-Second Zero-Hardware Scaffolding
+
+If you do not have physical RFID readers or edge containers running, you can generate and run a fully working project immediately:
+
+### Option A: Interactive Scaffolding Wizard (Web Radar, Node Worker, C# Gate)
+```bash
+npx create-autoid-app my-rfid-project
+```
+Select from:
+1. `web-radar-dashboard`: Modern Vite + Canvas Radar visualizer with sound effect and live simulated tag inventory.
+2. `node-stream-worker`: Node.js high-throughput deduplication stream consumer.
+3. `dotnet-gate-service`: C# .NET 9 Background Worker for warehouse portal gates.
+
+### Option B: .NET Warehouse Gate Service Template
+```bash
+dotnet new install Beetech.OmniAutoId.Templates
+dotnet new autoid-gate -n WarehousePortalGate
+cd WarehousePortalGate && dotnet run
+```
 
 ---
 

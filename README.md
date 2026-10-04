@@ -19,6 +19,29 @@ Whether you are building warehouse automation, logistics portals, manufacturing 
 
 ---
 
+## ⚡ 60-Second Developer Quickstart (Zero-Hardware)
+
+Start streaming real-time RFID tags, antenna directions, and PLC events in under 60 seconds — with automatic zero-hardware simulation:
+
+```bash
+# Option A: Interactive Scaffolding Wizard (Web Radar, Node Worker, C# Gate)
+npx create-autoid-app my-rfid-project
+
+# Option B: .NET 8/9 Warehouse Gate Project Template
+dotnet new install Beetech.OmniAutoId.Templates
+dotnet new autoid-gate -n WarehousePortalGate
+```
+
+### 📦 Official Published Packages
+| Package | Registry | Version | Direct Command |
+| :--- | :---: | :---: | :--- |
+| **[`create-autoid-app`](https://www.npmjs.com/package/create-autoid-app)** | npm | `1.0.1` | `npx create-autoid-app <project-name>` |
+| **[`Beetech.OmniAutoId.Client`](https://www.nuget.org/packages/Beetech.OmniAutoId.Client)** | NuGet | `1.0.0` | `dotnet add package Beetech.OmniAutoId.Client` |
+| **[`Beetech.OmniAutoId.Templates`](https://www.nuget.org/packages/Beetech.OmniAutoId.Templates)** | NuGet | `1.0.0` | `dotnet new install Beetech.OmniAutoId.Templates` |
+| **[`@beetech-autoid/smartsdk-client`](https://www.npmjs.com/package/@beetech-autoid/smartsdk-client)** | npm | `1.0.4` | `npm install @beetech-autoid/smartsdk-client` |
+
+---
+
 ## 🚀 Quick Navigation
 
 | Section | Focus Area | Audience | Link |
